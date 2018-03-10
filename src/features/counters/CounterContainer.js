@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import NewCounterComponent from './NewCounterComponent';
 import TotalCountComponent from './TotalCountComponent';
 import CounterComponent from './CounterComponent';
@@ -18,26 +19,46 @@ const HorizontalLine = styled.div`
     margin-bottom: 20px;
 `;
 
-export default class CountersContainer extends React.Component {
+export default class CounterContainer extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             counters: [],
-            totalCount: 0
+            totalCount: 0,
         };
+
+        // Bind methods that will be pass down as props.
         this.addCounter = this.addCounter.bind(this);
         this.incrementCounter = this.incrementCounter.bind(this);
         this.decrementCounter = this.decrementCounter.bind(this);
         this.deleteCounter = this.deleteCounter.bind(this);
     }
 
+    componentWillMount() {
+        this.setInitialCounterState();
+    }
+
+    setInitialCounterState() {
+        axios.get('http://localhost:5000/counters')
+            .then(res => {
+                const counters = res.data.slice();
+                const totalCount = this.calculateTotal(counters);
+                this.setState({counters: counters, totalCount: totalCount})
+            })
+            .catch(err => console.log(err))
+
+    }
+
     addCounter(title) {
-        let counters = this.state.counters.slice();
-        const id = counters.length;
-        counters.push({id: id, title: title, count: 0},);
-        const totalCount = this.calculateTotal(counters);
-        this.setState({counters: counters, totalCount: totalCount});
+        const data = {title: title};
+        axios.post('http://localhost:5000/counters', data)
+            .then(res => {
+                const counters = res.data.slice();
+                const totalCount = this.calculateTotal(counters);
+                this.setState({counters: counters, totalCount: totalCount})
+            })
+            .catch(err => console.log(err))
     }
 
     calculateTotal(counters) {
@@ -49,39 +70,34 @@ export default class CountersContainer extends React.Component {
         return totalCount;
     }
 
-    incrementCounter(i) {
-        let counters = this.state.counters.slice();
-        counters.forEach((counter) => {
-            if (counter.id === i) {
-                counter.count += 1;
-            }
-        });
-        const totalCount = this.calculateTotal(counters)
-        this.setState({counters: counters, totalCount: totalCount})
+    incrementCounter(id) {
+        axios.post(`http://localhost:5000/counters/${id}/increment`)
+            .then(res => {
+                const counters = res.data.slice();
+                const totalCount = this.calculateTotal(counters);
+                this.setState({counters: counters, totalCount: totalCount})
+            })
+            .catch(err => console.log(err))
     }
 
-    decrementCounter(i) {
-        let counters = this.state.counters.slice();
-        counters.forEach((counter) => {
-            if (counter.id === i) {
-                counter.count -= 1;
-            }
-        });
-        const totalCount = this.calculateTotal(counters);
-        this.setState({counters: counters, totalCount: totalCount})
+    decrementCounter(id) {
+        axios.post(`http://localhost:5000/counters/${id}/decrement`)
+            .then(res => {
+                const counters = res.data.slice();
+                const totalCount = this.calculateTotal(counters);
+                this.setState({counters: counters, totalCount: totalCount})
+            })
+            .catch(err => console.log(err))
     }
 
-    deleteCounter(i) {
-        let counters = this.state.counters.slice();
-        let countersCopy = this.state.counters.slice();
-        countersCopy.forEach((counter, index) => {
-            if (counter.id === i) {
-                delete counters[index];
-            }
-        });
-
-        const totalCount = this.calculateTotal(counters);
-        this.setState({counters: counters, totalCount: totalCount})
+    deleteCounter(id) {
+        axios.delete(`http://localhost:5000/counters/${id}`)
+            .then(res => {
+                const counters = res.data.slice();
+                const totalCount = this.calculateTotal(counters);
+                this.setState({counters: counters, totalCount: totalCount})
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
