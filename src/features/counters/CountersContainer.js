@@ -1,10 +1,6 @@
 import React from 'react';
-import NewCounterComponent from './NewCounterContainer';
-import TotalCountComponent from './TotalCountComponent';
-import CounterComponent from './CounterComponent';
-import {FlexCol, HorizontalLine} from "../../commons/styled-components";
-import * as Counter from "./Counter";
-
+import * as Counter from './Counter';
+import CountersComponent from './CountersComponent';
 
 export default class CounterContainer extends React.Component {
 
@@ -95,40 +91,13 @@ export default class CounterContainer extends React.Component {
     }
 
     render() {
-        return (
-            <FlexCol
-                margin='20px'
-                padding='5px'
-                width='300px'
-            >
-                <NewCounterComponent
-                    onClick={(title) => this.addCounter(title)}
-                />
-                <HorizontalLine
-                    margin='20px 0px 10px 0px'
-                    borderWidth='0px 0px 1px 0px'
-                    borderStyle='dashed'
-                    borderColor='gray'
-                />
-
-                {this.state.counters.map((counter) => {
-                    return <CounterComponent
-                        key={counter.id}
-                        counter={counter}
-                        decr={(i) => this.decrementCounter(i)}
-                        incr={(i) => this.incrementCounter(i)}
-                        delete={(i) => this.deleteCounter(i)}
-                    />
-                })}
-
-                <HorizontalLine
-                    margin='20px 0px 0px 0px'
-                    borderWidth='0px 0px 1px 0px'
-                    borderStyle='dashed'
-                    borderColor='gray'
-                />
-                <TotalCountComponent total={this.state.totalCount}/>
-            </FlexCol>
-        )
+        return <CountersComponent
+            counters={this.state.counters}
+            totalCount={this.state.totalCount}
+            addCounter={(title) => this.addCounter(title)}
+            decrementCounter={(counterId) => this.decrementCounter(counterId)}
+            incrementCounter={(counterId) => this.incrementCounter(counterId)}
+            deleteCounter={(counterId) => this.deleteCounter(counterId)}
+        />
     }
 }
