@@ -1,5 +1,117 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`render add counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 30px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1 {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: gray;
+}
+
+.c2 {
+  border: 1px solid gray;
+  border-radius: 1em;
+  width: 100px;
+}
+
+.c2:hover {
+  background-color: #2ECC40;
+}
+
+<div
+  className="c0"
+  height="30px"
+  width="300px"
+>
+  <input
+    className="c1"
+    onChange={[Function]}
+    placeholder="Counter title"
+    size={15}
+    type="text"
+    value=""
+  />
+  <button
+    className="c2"
+    onClick={[Function]}
+    width="100px"
+  >
+    Add
+  </button>
+</div>
+`;
+
+exports[`render add counter 2`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 300px;
+  height: 30px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1 {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: gray;
+}
+
+.c2 {
+  border: 1px solid gray;
+  border-radius: 1em;
+  width: 100px;
+}
+
+.c2:hover {
+  background-color: #2ECC40;
+}
+
+<div
+  className="c0"
+  height="30px"
+  width="300px"
+>
+  <input
+    className="c1"
+    onChange={[Function]}
+    placeholder="Counter title"
+    size={15}
+    type="text"
+    value="test"
+  />
+  <button
+    className="c2"
+    onClick={[Function]}
+    width="100px"
+  >
+    Add
+  </button>
+</div>
+`;
+
 exports[`render new counter 1`] = `
 .c0 {
   display: -webkit-box;

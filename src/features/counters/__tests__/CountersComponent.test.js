@@ -42,10 +42,10 @@ test('ensure that correct amount of CounterComponent are added', () => {
     expect(counterComponents.length).toEqual(3)
 });
 
-test('ensure that NewCounterContainer is rendered', () => {
+test('ensure that AddCounterContainer is rendered', () => {
     const counters = [];
     const countersComponent = shallow(<CountersComponent counters={counters} totalCount={0}/>)
-    const addCounterComponent = countersComponent.find('NewCounterContainer');
+    const addCounterComponent = countersComponent.find('AddCounterContainer');
     expect(addCounterComponent.length).toEqual(1)
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import NewCounterComponent from './NewCounterContainer';
+import AddCounterContainer from './AddCounterContainer';
 import TotalCountComponent from './TotalCountComponent';
 import CounterComponent from './CounterComponent';
 import {FlexCol, HorizontalLine} from "../../commons/styled-components";
@@ -11,7 +11,7 @@ export default function CountersComponent(props) {
             padding='5px'
             width='300px'
         >
-            <NewCounterComponent
+            <AddCounterContainer
                 onClick={(title) => props.addCounter(title)}
             />
             <HorizontalLine

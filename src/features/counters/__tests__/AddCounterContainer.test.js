@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
-import NewCounterComponent from '../NewCounterContainer'
+import AddCounterComponent from '../AddCounterContainer'
 
-test('render new counter', () => {
-    const tree = renderer.create(<NewCounterComponent/>);
+test('render add counter', () => {
+    const tree = renderer.create(<AddCounterComponent/>);
     expect(tree.toJSON()).toMatchSnapshot();
 
     const instance = tree.getInstance();
@@ -14,7 +14,7 @@ test('render new counter', () => {
 });
 
 test('ensure that title state is given in input', () => {
-    const wrapper = shallow(<NewCounterComponent/>);
+    const wrapper = shallow(<AddCounterComponent/>);
     let input = wrapper.find('Input');
     expect(input.get(0).props.value).toEqual('');
 
@@ -25,7 +25,7 @@ test('ensure that title state is given in input', () => {
 
 test('ensure that we are able to add counter when title state is non-blank', () => {
     const onClickMock = jest.fn();
-    const wrapper = shallow(<NewCounterComponent onClick={onClickMock}/>);
+    const wrapper = shallow(<AddCounterComponent onClick={onClickMock}/>);
     wrapper.setState({title: 'test'});
     const button = wrapper.find('AddButton');
     button.simulate('click')
@@ -34,7 +34,7 @@ test('ensure that we are able to add counter when title state is non-blank', () 
 
 test('ensure that we are not able to add counter when title state is blank', () => {
     const onClickMock = jest.fn();
-    const wrapper = shallow(<NewCounterComponent onClick={onClickMock}/>);
+    const wrapper = shallow(<AddCounterComponent onClick={onClickMock}/>);
     const button = wrapper.find('AddButton');
     button.simulate('click')
     expect(onClickMock).toHaveBeenCalledTimes(0);

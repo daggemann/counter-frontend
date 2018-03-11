@@ -8,7 +8,7 @@ const AddButton = Button.extend`
 `;
 AddButton.displayName = 'AddButton';
 
-export default class NewCounterContainer extends React.Component {
+export default class AddCounterContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
