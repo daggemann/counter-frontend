@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import NewCounterComponent from './NewCounterComponent';
 import TotalCountComponent from './TotalCountComponent';
 import CounterComponent from './CounterComponent';
+import {addNewCounter, calculateTotalCount, getAllCounters} from "./Counter";
 
 const Rows = styled.div`
     display: flex;
@@ -36,68 +36,75 @@ export default class CounterContainer extends React.Component {
     }
 
     componentWillMount() {
-        this.setInitialCounterState();
-    }
-
-    setInitialCounterState() {
-        axios.get('http://localhost:5000/counters')
-            .then(res => {
-                const counters = res.data.slice();
-                const totalCount = this.calculateTotal(counters);
+        getAllCounters()
+            .then((counters) => {
+                const totalCount = calculateTotalCount(counters);
                 this.setState({counters: counters, totalCount: totalCount})
             })
-            .catch(err => console.log(err))
-
+            .catch((err) => {
+                console.log(err);
+                this.setState({counters: [], totalCount: 0})
+            });
     }
 
     addCounter(title) {
-        const data = {title: title};
-        axios.post('http://localhost:5000/counters', data)
-            .then(res => {
-                const counters = res.data.slice();
-                const totalCount = this.calculateTotal(counters);
+
+        addNewCounter(title)
+            .then((counters) => {
+                const totalCount = calculateTotalCount(counters);
                 this.setState({counters: counters, totalCount: totalCount})
             })
-            .catch(err => console.log(err))
-    }
-
-    calculateTotal(counters) {
-        let totalCount = 0;
-        counters.forEach((counter) => {
-            totalCount += counter.count;
-        });
-
-        return totalCount;
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     incrementCounter(id) {
-        axios.post(`http://localhost:5000/counters/${id}/increment`)
-            .then(res => {
-                const counters = res.data.slice();
-                const totalCount = this.calculateTotal(counters);
-                this.setState({counters: counters, totalCount: totalCount})
-            })
-            .catch(err => console.log(err))
+        const counters = this.state.counters.slice();
+        counters.forEach((counter) => {
+            if (counter.id === id) {
+                counter.increment()
+                    .then((counters) => {
+                        const totalCount = calculateTotalCount(counters);
+                        this.setState({counters: counters, totalCount: totalCount})
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            }
+        })
     }
 
     decrementCounter(id) {
-        axios.post(`http://localhost:5000/counters/${id}/decrement`)
-            .then(res => {
-                const counters = res.data.slice();
-                const totalCount = this.calculateTotal(counters);
-                this.setState({counters: counters, totalCount: totalCount})
-            })
-            .catch(err => console.log(err))
+        const counters = this.state.counters.slice();
+        counters.forEach((counter) => {
+            if (counter.id === id) {
+                counter.decrement()
+                    .then((counters) => {
+                        const totalCount = calculateTotalCount(counters);
+                        this.setState({counters: counters, totalCount: totalCount})
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            }
+        })
     }
 
     deleteCounter(id) {
-        axios.delete(`http://localhost:5000/counters/${id}`)
-            .then(res => {
-                const counters = res.data.slice();
-                const totalCount = this.calculateTotal(counters);
-                this.setState({counters: counters, totalCount: totalCount})
-            })
-            .catch(err => console.log(err))
+        const counters = this.state.counters.slice();
+        counters.forEach((counter) => {
+            if (counter.id === id) {
+                counter.delete()
+                    .then((counters) => {
+                        const totalCount = calculateTotalCount(counters);
+                        this.setState({counters: counters, totalCount: totalCount})
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            }
+        })
     }
 
     render() {

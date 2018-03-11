@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import CounterComponent from "../CounterComponent";
-import Counter from '../Counter';
+import {Counter} from '../Counter';
 
 test('render counter', () => {
     const counter = new Counter(1, "test", 1);
