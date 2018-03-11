@@ -81,7 +81,7 @@ export class Counter {
 }
 
 
-export function calculateTotalCount(counters) {
+export function totalCount(counters) {
     let totalCount = 0;
     counters.forEach((counter) => {
         totalCount += counter.count;
@@ -89,7 +89,7 @@ export function calculateTotalCount(counters) {
     return totalCount;
 }
 
-export function getAllCounters() {
+export function getAll() {
     return new Promise((resolve, reject) => {
         axios.get(API_URL)
             .then(res => {
@@ -105,7 +105,7 @@ export function getAllCounters() {
     })
 }
 
-export function addNewCounter(title) {
+export function add(title) {
     return new Promise( (resolve, reject) => {
         axios.post(API_URL, {title: title})
             .then(res => {

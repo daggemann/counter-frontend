@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import NewCounterComponent from './NewCounterComponent';
 import TotalCountComponent from './TotalCountComponent';
 import CounterComponent from './CounterComponent';
-import {addNewCounter, calculateTotalCount, getAllCounters} from "./Counter";
+import * as Counter from "./Counter";
 
 const Rows = styled.div`
     display: flex;
@@ -36,9 +36,9 @@ export default class CounterContainer extends React.Component {
     }
 
     componentWillMount() {
-        getAllCounters()
+        Counter.getAll()
             .then((counters) => {
-                const totalCount = calculateTotalCount(counters);
+                const totalCount = Counter.totalCount(counters);
                 this.setState({counters: counters, totalCount: totalCount})
             })
             .catch((err) => {
@@ -49,9 +49,9 @@ export default class CounterContainer extends React.Component {
 
     addCounter(title) {
 
-        addNewCounter(title)
+        Counter.add(title)
             .then((counters) => {
-                const totalCount = calculateTotalCount(counters);
+                const totalCount = Counter.totalCount(counters);
                 this.setState({counters: counters, totalCount: totalCount})
             })
             .catch((err) => {
@@ -65,7 +65,7 @@ export default class CounterContainer extends React.Component {
             if (counter.id === id) {
                 counter.increment()
                     .then((counters) => {
-                        const totalCount = calculateTotalCount(counters);
+                        const totalCount = Counter.totalCount(counters);
                         this.setState({counters: counters, totalCount: totalCount})
                     })
                     .catch((err) => {
@@ -81,7 +81,7 @@ export default class CounterContainer extends React.Component {
             if (counter.id === id) {
                 counter.decrement()
                     .then((counters) => {
-                        const totalCount = calculateTotalCount(counters);
+                        const totalCount = Counter.totalCount(counters);
                         this.setState({counters: counters, totalCount: totalCount})
                     })
                     .catch((err) => {
@@ -97,7 +97,7 @@ export default class CounterContainer extends React.Component {
             if (counter.id === id) {
                 counter.delete()
                     .then((counters) => {
-                        const totalCount = calculateTotalCount(counters);
+                        const totalCount = Counter.totalCount(counters);
                         this.setState({counters: counters, totalCount: totalCount})
                     })
                     .catch((err) => {
