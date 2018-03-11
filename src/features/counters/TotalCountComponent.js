@@ -1,15 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const TotalCount = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-top: 10px;
-`;
-
-const Text = styled.span``;
-Text.displayName = 'Text';
+import {FlexRow} from '../../commons/styled-components';
 
 const Total = styled.span`
     margin-left: 10px;
@@ -18,9 +9,8 @@ Total.displayName = 'Total';
 
 export default function TotalCountComponent(props) {
     return (
-        <TotalCount>
-            <Text>Total:</Text>
-            <Total>{props.total || 0}</Total>
-        </TotalCount>
-)
+        <FlexRow justifyContent='flex-end' margin='10px 0px 0px 0px'>
+            Total:<Total>{props.total || 0}</Total>
+        </FlexRow>
+    )
 }
