@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render counter 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 30px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 5px 0px 0px 0px;
+}
+
 .c1 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -22,28 +38,12 @@ exports[`render counter 1`] = `
   width: 100px;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-top: 5px;
-  height: 30px;
-}
-
 .c2 {
-  width: 30px;
-  border: 0px solid black;
+  border: 0px;
   border-radius: 1em 0em 0em 1em;
+  width: 30px;
   background-color: #FF4136;
-  margin-right: 2px;
+  margin: 0px 2px 0px 0px;
 }
 
 .c2:hover {
@@ -56,9 +56,9 @@ exports[`render counter 1`] = `
 }
 
 .c5 {
-  width: 20px;
   border: 0px;
   border-radius: 1em 0em 0em 1em;
+  width: 20px;
 }
 
 .c5:hover {
@@ -72,9 +72,9 @@ exports[`render counter 1`] = `
 }
 
 .c7 {
-  width: 20px;
   border: 0px;
   border-radius: 0em 1em 1em 0em;
+  width: 20px;
 }
 
 .c7:hover {
@@ -83,6 +83,7 @@ exports[`render counter 1`] = `
 
 <div
   className="c0"
+  height="30px"
 >
   <div
     className="c1"
@@ -90,6 +91,7 @@ exports[`render counter 1`] = `
     <button
       className="c2"
       onClick={[Function]}
+      width="30px"
     >
       x
     </button>
@@ -106,6 +108,7 @@ exports[`render counter 1`] = `
     <button
       className="c5"
       onClick={[Function]}
+      width="20px"
     >
       -
     </button>
@@ -117,6 +120,7 @@ exports[`render counter 1`] = `
     <button
       className="c7"
       onClick={[Function]}
+      width="20px"
     >
       +
     </button>

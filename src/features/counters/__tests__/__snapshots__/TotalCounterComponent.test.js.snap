@@ -13,7 +13,7 @@ exports[`render total count 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  margin-top: 10px;
+  margin: 10px 0px 0px 0px;
 }
 
 .c1 {
@@ -23,11 +23,7 @@ exports[`render total count 1`] = `
 <div
   className="c0"
 >
-  <span
-    className=""
-  >
-    Total:
-  </span>
+  Total:
   <span
     className="c1"
   >

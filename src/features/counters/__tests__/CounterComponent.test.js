@@ -23,7 +23,7 @@ test('delete counter', () => {
     const mockDelete = jest.fn();
     const counter = new Counter(1, "test", 1);
     const component = shallow(<CounterComponent delete={(i) => mockDelete(i)} counter={counter}/>);
-    const deleteButton = component.find('Delete');
+    const deleteButton = component.find('DeleteButton');
     deleteButton.simulate('click');
     expect(mockDelete).toHaveBeenCalledTimes(1);
     expect(mockDelete).toBeCalledWith(1)
@@ -34,7 +34,7 @@ test('increment counter', () => {
 
     const counter = new Counter(1, "test", 1);
     const component = shallow(<CounterComponent incr={(i) => mockIncrement(i)} counter={counter}/>);
-    const incrementButton = component.find('Increment');
+    const incrementButton = component.find('IncrementButton');
     incrementButton.simulate('click');
     expect(mockIncrement).toHaveBeenCalledTimes(1);
     expect(mockIncrement).toBeCalledWith(1);
@@ -45,7 +45,7 @@ test('decrement counter', () => {
 
     const counter = new Counter(1, "test", 1);
     const component = shallow(<CounterComponent decr={(i) => mockDecrement(i)} counter={counter}/>);
-    const incrementButton = component.find('Decrement');
+    const incrementButton = component.find('DecrementButton');
     incrementButton.simulate('click');
     expect(mockDecrement).toHaveBeenCalledTimes(1);
     expect(mockDecrement).toBeCalledWith(1);

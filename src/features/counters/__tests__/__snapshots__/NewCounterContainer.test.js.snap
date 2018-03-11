@@ -9,24 +9,23 @@ exports[`render new counter 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  width: 300px;
+  height: 30px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 300px;
-  height: 30px;
 }
 
 .c1 {
-  border-top: 0px solid gray;
-  border-right: 0px solid gray;
-  border-bottom: 1px solid gray;
-  border-left: 0px solid gray;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: gray;
 }
 
 .c2 {
   border: 1px solid gray;
-  border-radius: 1em 1em 1em 1em;
+  border-radius: 1em;
   width: 100px;
 }
 
@@ -50,6 +49,7 @@ exports[`render new counter 1`] = `
   <button
     className="c2"
     onClick={[Function]}
+    width="100px"
   >
     Add
   </button>
@@ -65,24 +65,23 @@ exports[`render new counter 2`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  width: 300px;
+  height: 30px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 300px;
-  height: 30px;
 }
 
 .c1 {
-  border-top: 0px solid gray;
-  border-right: 0px solid gray;
-  border-bottom: 1px solid gray;
-  border-left: 0px solid gray;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: gray;
 }
 
 .c2 {
   border: 1px solid gray;
-  border-radius: 1em 1em 1em 1em;
+  border-radius: 1em;
   width: 100px;
 }
 
@@ -106,6 +105,7 @@ exports[`render new counter 2`] = `
   <button
     className="c2"
     onClick={[Function]}
+    width="100px"
   >
     Add
   </button>

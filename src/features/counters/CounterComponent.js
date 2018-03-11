@@ -21,7 +21,7 @@ const DecrementButton = Button.extend`
     }
 
 `;
-DecrementButton.displayName = 'Title';
+DecrementButton.displayName = 'DecrementButton';
 
 const Count = styled.span`
     text-align: center;
