@@ -1,23 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import NewCounterComponent from './NewCounterContainer';
 import TotalCountComponent from './TotalCountComponent';
 import CounterComponent from './CounterComponent';
+import {FlexCol, HorizontalLine} from "../../commons/styled-components";
 import * as Counter from "./Counter";
 
-const Rows = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 20px
-    padding: 5px;
-    width: 300px;
-`;
-
-const HorizontalLine = styled.div`
-    margin-top: 20px;
-    border-bottom: 1px dashed gray;
-    margin-bottom: 20px;
-`;
 
 export default class CounterContainer extends React.Component {
 
@@ -109,11 +96,20 @@ export default class CounterContainer extends React.Component {
 
     render() {
         return (
-            <Rows>
+            <FlexCol
+                margin='20px'
+                padding='5px'
+                width='300px'
+            >
                 <NewCounterComponent
                     onClick={(title) => this.addCounter(title)}
                 />
-                <HorizontalLine/>
+                <HorizontalLine
+                    margin='20px 0px 10px 0px'
+                    borderWidth='0px 0px 1px 0px'
+                    borderStyle='dashed'
+                    borderColor='gray'
+                />
 
                 {this.state.counters.map((counter) => {
                     return <CounterComponent
@@ -125,9 +121,14 @@ export default class CounterContainer extends React.Component {
                     />
                 })}
 
-                <HorizontalLine/>
+                <HorizontalLine
+                    margin='20px 0px 0px 0px'
+                    borderWidth='0px 0px 1px 0px'
+                    borderStyle='dashed'
+                    borderColor='gray'
+                />
                 <TotalCountComponent total={this.state.totalCount}/>
-            </Rows>
+            </FlexCol>
         )
     }
 }
