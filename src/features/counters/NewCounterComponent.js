@@ -16,6 +16,8 @@ const Input = styled.input`
     border-left: 0px solid gray;
 `;
 
+Input.displayName = 'Input';
+
 const AddButton = styled.button`
     border: 1px solid gray;
     border-radius: 1em 1em 1em 1em;
@@ -25,6 +27,8 @@ const AddButton = styled.button`
         background-color: #2ECC40;
     }
 `;
+
+AddButton.displayName = 'AddButton';
 
 export default class NewCounterContainer extends React.Component {
     constructor(props) {
