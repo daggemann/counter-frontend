@@ -24,11 +24,13 @@ const Delete = styled.button`
         margin-right: 10px;
     }
 `;
+Delete.displayName = 'Delete';
 
 const Title = styled.span`
     margin-top: 6px;
     text-align: center;
 `;
+Title.displayName = 'Title';
 
 const Decrement = styled.button`
     width: 20px;
@@ -39,12 +41,14 @@ const Decrement = styled.button`
         background-color: #7FDBFF;
     }
 `;
+Decrement.displayName = 'Decrement';
 
 const Count = styled.span`
     text-align: center;
     margin-top: 6px;
     width: 50px;
 `;
+Count.displayName = 'Count';
 
 const Increment = styled.button`
     width: 20px;
@@ -55,6 +59,7 @@ const Increment = styled.button`
         background-color: #7FDBFF;
     }
 `;
+Increment.displayName = 'Increment';
 
 
 export default function CounterComponent(props) {
