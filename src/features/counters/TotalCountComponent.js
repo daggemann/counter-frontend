@@ -9,9 +9,12 @@ const TotalCount = styled.div`
 `;
 
 const Text = styled.span``;
+Text.displayName = 'Text';
+
 const Total = styled.span`
     margin-left: 10px;
 `;
+Total.displayName = 'Total';
 
 export default function TotalCountComponent(props) {
     return (
