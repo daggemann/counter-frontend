@@ -22,6 +22,9 @@ export const Button = styled.button`
     ${props => (props.border) ? 'border: ' + props.border : ''};
     ${props => (props.borderRadius) ? 'border-radius: ' + props.borderRadius : ''};
     ${props => (props.width) ? 'width: ' + props.width : ''};
+    ${props => (props.backgroundColor) ? 'background-color: ' + props.backgroundColor : ''};
+    ${props => (props.margin) ? 'margin: ' + props.margin : ''};
+    
 
 `;
 Button.displayName = 'Button';

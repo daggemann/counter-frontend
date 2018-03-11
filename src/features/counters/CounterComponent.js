@@ -1,30 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Button, FlexRow} from "../../commons/styled-components";
 
-const FlexRow = styled.div`
-    display: flex;
-    flex-direction: row;
-    ${props => (props.width) ? 'width: ' + props.width : ''};
-    ${props => (props.justifyContent) ? 'justify-content: ' + props.justifyContent : ''};
-`;
-
-const StyledCounter = FlexRow.extend`
-    margin-top: 5px;
-    height: 30px;
-`;
-
-const Delete = styled.button`
-    width: 30px;
-    border: 0px solid black;
-    border-radius: 1em 0em 0em 1em;
-    background-color: #FF4136;
-    margin-right: 2px;
-
+const DeleteButton = Button.extend`
     &:hover {
         margin-right: 10px;
     }
 `;
-Delete.displayName = 'Delete';
+DeleteButton.displayName = 'DeleteButton';
 
 const Title = styled.span`
     margin-top: 6px;
@@ -32,16 +15,13 @@ const Title = styled.span`
 `;
 Title.displayName = 'Title';
 
-const Decrement = styled.button`
-    width: 20px;
-    border: 0px;
-    border-radius: 1em 0em 0em 1em;
-    
+const DecrementButton = Button.extend`
     &:hover {
         background-color: #7FDBFF;
     }
+
 `;
-Decrement.displayName = 'Decrement';
+DecrementButton.displayName = 'Title';
 
 const Count = styled.span`
     text-align: center;
@@ -50,30 +30,48 @@ const Count = styled.span`
 `;
 Count.displayName = 'Count';
 
-const Increment = styled.button`
-    width: 20px;
-    border: 0px;
-    border-radius: 0em 1em 1em 0em;
-    
+const IncrementButton = Button.extend`
     &:hover {
         background-color: #7FDBFF;
     }
 `;
-Increment.displayName = 'Increment';
-
+IncrementButton.displayName = 'IncrementButton';
 
 export default function CounterComponent(props) {
     return (
-        <StyledCounter justifyContent='space-between'>
+        <FlexRow justifyContent='space-between' margin='5px 0px 0px 0px' height='30px'>
             <FlexRow>
-                <Delete onClick={() => props.delete(props.counter.id)}>x</Delete>
+                <DeleteButton
+                    onClick={() => props.delete(props.counter.id)}
+                    width='30px'
+                    margin='0px 2px 0px 0px'
+                    border='0px'
+                    borderRadius='1em 0em 0em 1em'
+                    backgroundColor='#FF4136'
+                >
+                    x
+                </DeleteButton>
                 <Title>{props.counter.title}</Title>
             </FlexRow>
             <FlexRow width='100px'>
-                <Decrement onClick={() => props.decr(props.counter.id)}>-</Decrement>
+                <DecrementButton
+                    onClick={() => props.decr(props.counter.id)}
+                    width='20px'
+                    border='0px'
+                    borderRadius='1em 0em 0em 1em'
+                >
+                    -
+                </DecrementButton>
                 <Count>{props.counter.count}</Count>
-                <Increment onClick={() => props.incr(props.counter.id)}>+</Increment>
+                <IncrementButton
+                    onClick={() => props.incr(props.counter.id)}
+                    width='20px'
+                    border='0px'
+                    borderRadius='0em 1em 1em 0em'
+                >
+                    +
+                </IncrementButton>
             </FlexRow>
-        </StyledCounter>
+        </FlexRow>
     )
 }
