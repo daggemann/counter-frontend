@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NewCounterComponent from './NewCounterComponent';
+import NewCounterComponent from './NewCounterContainer';
 import TotalCountComponent from './TotalCountComponent';
 import CounterComponent from './CounterComponent';
 import * as Counter from "./Counter";

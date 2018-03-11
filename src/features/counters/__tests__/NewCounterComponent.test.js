@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
-import NewCounterComponent from '../NewCounterComponent'
+import NewCounterComponent from '../NewCounterContainer'
 
 test('render new counter', () => {
     const tree = renderer.create(<NewCounterComponent/>);

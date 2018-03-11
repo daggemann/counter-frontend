@@ -1,33 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import {Button, FlexRow, Input} from "../../commons/styled-components";
 
-const NewCounterComponent = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    ${props => (props.width) ? 'width: ' + props.width : ''};
-    ${props => (props.height) ? 'height: ' + props.height : ''};
-`;
-
-const Input = styled.input`
-    border-top: 0px solid gray;
-    border-right: 0px solid gray;
-    border-bottom: 1px solid gray;
-    border-left: 0px solid gray;
-`;
-
-Input.displayName = 'Input';
-
-const AddButton = styled.button`
-    border: 1px solid gray;
-    border-radius: 1em 1em 1em 1em;
-    width: 100px;
-    
+const AddButton = Button.extend`
     &:hover {
         background-color: #2ECC40;
     }
 `;
-
 AddButton.displayName = 'AddButton';
 
 export default class NewCounterContainer extends React.Component {
@@ -54,16 +32,26 @@ export default class NewCounterContainer extends React.Component {
 
     render() {
         return (
-            <NewCounterComponent width={'300px'} height={'30px'}>
+            <FlexRow justifyContent='space-between' width={'300px'} height={'30px'}>
                 <Input
+                    borderWidth='0px 0px 1px 0px'
+                    borderStyle='solid'
+                    borderColor='gray'
                     type='text'
                     placeholder='Counter title'
                     value={this.state.title}
                     onChange={this.handleChange}
                     size={15}
                 />
-                <AddButton onClick={this.addCounter}>Add</AddButton>
-            </NewCounterComponent>
+                <AddButton
+                    border='1px solid gray'
+                    borderRadius='1em'
+                    width='100px'
+                    onClick={this.addCounter}
+                >
+                    Add
+                </AddButton>
+            </FlexRow>
         )
     }
 }
