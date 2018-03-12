@@ -8,7 +8,7 @@ test('ensure that counters container can get counters when mounted', () => {
     const component = mount(<CounterContainer/>);
     const promise = Promise.resolve();
     return promise
-        .then( () => {
+        .then(() => {
             expect(component.update().find('Total').get(0).props.children).toEqual(3)
         })
 });
@@ -21,7 +21,7 @@ test('ensure that counter container can add a counter and update accordingly', (
     addButton.simulate('click');
     const promise = Promise.resolve();
     return promise
-        .then( () => {
+        .then(() => {
             expect(component.update().find('CounterComponent').length).toEqual(4);
             expect(component.find('Total').get(0).props.children).toEqual(4);
         })
